@@ -1,9 +1,11 @@
 import subprocess
 from datetime import datetime
-import json
+import os, json
 
 # Cargar datos desde secrests.json
-with open("secrets.json", "r") as f:
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+secrets_file = os.path.join(BASE_DIR, "secrets.json")
+with open(secrets_file, "r") as f:
     secrets = json.load(f)
 
 usuario = secrets["usuario"]
