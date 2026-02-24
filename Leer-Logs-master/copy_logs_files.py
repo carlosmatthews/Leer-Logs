@@ -20,8 +20,8 @@ def obtener_fecha_formato_yyyymmdd():
     fecha_actual = datetime.now()
     fecha_formateada = fecha_actual.strftime("%Y%m%d")
     return fecha_formateada
-
-nombre_ultimo_backup = ["BACKUP-04-TO-03-", "BACKUP-02-TO-04B-", "BACKUP-02-TO-04A-", "BACKUP-01B-TO-04B-", "BACKUP-01A-TO-04A-"] 
+#define los nombres de los archivos de backup a copiar y buscar 
+nombre_ultimo_backup = ["BACKUP-04B-TO-03-", "BACKUP-02-TO-04B-", "BACKUP-02-TO-04A-", "BACKUP-01B-TO-04B-", "BACKUP-01A-TO-04A-"]
 
 def ejecutar_scp(usuario, host, ruta_remota, ruta_local):
     """Ejecuta el comando scp para copiar un archivo desde una máquina remota."""

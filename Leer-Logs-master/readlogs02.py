@@ -1,5 +1,6 @@
 import os
 import subprocess
+import sys
 from datetime import datetime
 from copy_logs_files import copy_logs
 
@@ -7,7 +8,7 @@ from copy_logs_files import copy_logs
 copy_logs()
 
 # Configuración
-logs_folder = os.path.join(os.path.expanduser('~'), 'Desktop', 'Logs')  # Ruta a la carpeta de logs
+logs_folder = sys.argv[1] if len(sys.argv) > 1 else os.path.join(os.path.expanduser('~'), 'Desktop', "Leer-Logs-master", 'Logs')
 keywords = ['error', 'fail', 'warning', 'critical', 'exception']  # Palabras clave para buscar
 seven_zip_path = r'C:\Program Files\7-Zip\7z.exe'  # Ruta al ejecutable de 7-Zip
 

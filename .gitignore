@@ -1,2 +1,9 @@
-Leer-Logs-master/secrets.json
-Leer-Logs-master/__pycache__/copy_logs_files.cpython-39.pyc
+# Archivos sensibles
+secrets.json
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Logs de backup
+Logs/
