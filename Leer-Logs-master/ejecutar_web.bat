@@ -8,5 +8,4 @@ if not exist "venv" (
     exit /b 1
 )
 
-call venv\Scripts\python gui_backup_monitor.py
-pause
+call venv\Scripts\streamlit run web_backup_monitor.py
