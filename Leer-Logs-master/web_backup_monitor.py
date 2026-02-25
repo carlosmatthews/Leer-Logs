@@ -108,7 +108,32 @@ for bp in backup_list:
     backup_name = bp.replace('-', ' → ').replace('_', ' ').strip().upper()
     backup_name = backup_name[:-1] if backup_name.endswith(' → ') else backup_name
     
-    with st.expander(f"{backup_name}", expanded=bool(data.get('errores')) or not data['tiene_backup']):
+    # Determinar color y estado
+    if not data['tiene_backup']:
+        color = "#FFB3B3"  # Rojo suave
+        estado = "✗ Sin backup"
+        emoji = "🔴"
+    elif data.get('es_parcial'):
+        color = "#FFE599"  # Amarillo suave
+        estado = f"⚠ Parcial ({len(data['errores'])})"
+        emoji = "🟡"
+    elif data['errores']:
+        color = "#FFB3B3"  # Rojo suave
+        estado = f"✗ Error ({len(data['errores'])})"
+        emoji = "🔴"
+    else:
+        color = "#90EE90"  # Verde (ya es suave)
+        estado = "✓ OK"
+        emoji = "🟢"
+    
+    # Mostrar indicador de color
+    st.markdown(f"""
+    <div style="background-color: {color}; padding: 10px; border-radius: 5px; margin-bottom: 5px;">
+        <b>{emoji} {backup_name}</b> - {estado}
+    </div>
+    """, unsafe_allow_html=True)
+    
+    with st.expander("Ver detalle"):
         if not data['tiene_backup']:
             st.error("✗ Sin backup")
         elif data.get('es_parcial'):
